@@ -12,9 +12,13 @@ public class MyApplicationRunner implements CommandLineRunner {
         Logger logger = Logger.getLogger(MyApplicationRunner.class.getName());
         logger.info("Application Started");
         logger.info("Application Finished");
-        
-        int result = Integer.parseInt(args[0]) / Integer.parseInt(args[1]);
-        
+        try{
+            int result = Integer.parseInt(args[0]) / Integer.parseInt(args[1]);
+        } catch (ArithmeticException e) {
+            logger.warning("Division by zero is not allowed");      
         }
+        
+        
           
     }
+}

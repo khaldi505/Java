@@ -1,0 +1,1 @@
+2023-06-07T08:57:39.216+01:00  WARN 7637 --- [main] c.example.logging.MyApplicationRunner    : Division by zero is not allowed
