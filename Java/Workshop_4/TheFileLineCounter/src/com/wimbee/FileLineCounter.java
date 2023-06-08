@@ -16,22 +16,18 @@ public class FileLineCounter extends Thread {
         filePaths = new ArrayList<>();
         flcrs = new ArrayList<>();
 
-        try (Scanner scanner = new Scanner(System.in)) {
-            String inputFile = scanner.nextLine();
-            try {
-                FileInputStream fileInputStream = new FileInputStream(inputFile);
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
-                String line;
-                while ((line = bufferedReader.readLine()) != null) {
-                    filePaths.add("./" + line);
-                    FileLineCounterRunnable fileCounterRun = new FileLineCounterRunnable(counter, line);
-                    flcrs.add(fileCounterRun);
-                }
-            } catch (Exception e) {
-                System.out.println("File not found: " + inputFile);
+        String inputFile = "./input.txt";
+        try {
+            FileInputStream fileInputStream = new FileInputStream(inputFile);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                filePaths.add("./" + line);
+                FileLineCounterRunnable fileCounterRun = new FileLineCounterRunnable(counter, line);
+                flcrs.add(fileCounterRun);
             }
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("File not found: " + inputFile);
         }
 
         for (FileLineCounterRunnable flcrun : flcrs) {
