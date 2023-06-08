@@ -1,6 +1,12 @@
 package com.wimbee.ioc;
+import org.springframework.stereotype.Service;
 
+import com.wimbee.ioc.services.Doubler;
+import com.wimbee.ioc.services.Squarer;
+
+@Service
 public class MyRunner{
+
     public static void main(String[] args) {
     new ComputerProcessor()
     .addComputer(new Doubler())
