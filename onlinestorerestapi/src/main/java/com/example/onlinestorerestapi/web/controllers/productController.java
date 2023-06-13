@@ -15,11 +15,14 @@ import com.example.onlinestorerestapi.web.requests.ProductForm;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 
@@ -87,6 +90,20 @@ public class productController {
         });
 
         return new ResponseEntity<Object>(copyList, HttpStatus.OK);
+    }
+
+    @PutMapping(value="/{id}")
+    public ResponseEntity<Object> updateProduct(@PathVariable int id, @RequestBody ProductForm productForm) {
+        //TODO: process PUT request
+        Product product = products.get(id);
+        product.setPrice(productForm.getPrice());
+        return new ResponseEntity<Object>("Product Updated succusfully", HttpStatus.OK);
+    }
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Object> deleteProduct(@PathVariable int id) {
+        Product product = products.get(id);
+        products.remove(product);
+        return new ResponseEntity<Object>("Product deleted succusfully", HttpStatus.OK);
     }
     
 
