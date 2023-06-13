@@ -1,4 +1,4 @@
-package com.wimbee.ioc;
+package com.wimbee.ioc.model;
 import org.springframework.stereotype.Service;
 
 import com.wimbee.ioc.services.Doubler;
